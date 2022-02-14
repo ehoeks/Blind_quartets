@@ -23,6 +23,15 @@ Player B looses if after players B's Answer there is no valid state.
 ### State
 All players are represented as a list of **cards**. For all these cards their potential (or lack there of) is administered in their card representation.
 
+#### State Update
+Quartets: Four of the players cards (that have the correct potential) are collapsed into the four cards of the group.
+Question:
+- If the player allready has a card that is (partially) collapsed to the group, no state change is needed.
+- Otherwise collapse one card (that has the correct potential) to be only of that group.
+Answer:
+- Yes, collapse the card (that has the correct, and least potential) and hand it over to the questioner. This automatically excludes this option from all other cards in play.
+- No, exclude the specified card from all cards in the players hand.
+
 ### State check
 After each player's desicion the state is updated and a check is run to verify the state is still valid after that choice.
 
