@@ -25,4 +25,9 @@ All players are represented as a list of **cards**. For all these cards their po
 
 
 ### State check
-After each player's desicion the state check is run to verify the state is still valid after that choice.
+After each player's desicion the state is updated and a check is run to verify the state is still valid after that choice.
+
+#### Brute force method
+To check a state the folowing brute force method can be used:
+Clone the state to check and:
+Depth-first collapse the cards potentials while updating the concequences on the other cards, keeping track of all decisions made. If the this results in a imposible state, backtrack one step an try again. If all options for a card are tried backtrack an aditional position. If all cards are collapsed it is proven the stae is still valid, if back-tracking is reverted to the first (collapsable) card and all it's options are depleted it is proven the state is invalid.
