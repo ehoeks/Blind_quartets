@@ -18,6 +18,19 @@ Player A looses if declaring a imposible quartet.
 Player A looses if after player A's Question there is no valid state.  
 Player B looses if after players B's Answer there is no valid state.  
 
+### out of cards
+When a player A who has the turn has run out of cards:
+- The just quetioned player B gets the turn (if that one has cards left)
+- Then
+  - **house rule x** From the players with at least one card the first (clockwise from A) player get the turn.
+  - **house rule y** From the players with the least (but at least one) cards the first (clockwise from A) player get the turn.
+  - **house rule z** From the players with the most cards the first (clockwise from A) player get the turn.
+
+### End of game
+The game end when all but one player lost due to an invalid move (outcome I) or all quartets are won (outcome II).  
+I: The player who didn't lose, automatically wins.  
+II: The player who has the most quartets (and aquired the final one first) Wins.
+
 ## Implementation
 
 ### State
@@ -40,3 +53,6 @@ To check a state the following brute force method can be used.
 Clone the state (keeping the origional for reference) and depth-first collapse the cards potentials while updating the concequences on the other cards, keeping track of all decisions made.  
 If the this results in a imposible state, backtrack one step an try again. If all options for a card are tried backtrack an aditional position.  
 If all cards are collapsed it is proven the stae is still valid, if back-tracking is reverted to the first (collapsable) card and all it's options are depleted it is proven the state is invalid.
+
+#### Optimized brute force
+Like the normal brute force method with one addition. In stead of running the brute force algoritm on the cards in order they are in play, the cards are sorted from most specified to least specified before the check algoritm starts. This way cards will probably be more restricted when selected for callapsing.
