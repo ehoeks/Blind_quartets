@@ -56,3 +56,10 @@ If all cards are collapsed it is proven the stae is still valid, if back-trackin
 
 #### Optimized brute force
 Like the normal brute force method with one addition. In stead of running the brute force algoritm on the cards in order they are in play, the cards are sorted from most specified to least specified before the check algoritm starts. This way cards will probably be more restricted when selected for callapsing.
+
+#### Early DeadEnd detection
+The folowing method can be used to quickly check if the rest of the cards (rightside) does not have a chance of having a valid permutation.  
+L_R = length(R)  
+O_R = all R or-ed together  
+chance_valid = Hamming(O_R) >= L_R  
+if (!change_valid) there is no need to progress this lead further.
