@@ -1,7 +1,7 @@
 import functools
 import operator
 
-ALL = int(4294967295)
+ALL = int(("1" * 32), base=2)
 
 cards =  [16+8+4+1] + ([ALL] * 4) + [8, 4, 1]
 
