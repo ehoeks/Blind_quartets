@@ -33,7 +33,7 @@ def solvable(a) -> bool:
     if proven_unsolvable(a):
         return False
     
-    if len(a) == 1 and a != 0:
+    if len(a) == 1 and a[0] != 0:
         res.append(a[0])
         return True
 
