@@ -3,7 +3,7 @@ import operator
 
 ALL = int(4294967295)
 
-cards =   ([ALL] * 5) + [1, 1]
+cards =  [16+8+4+1] + ([ALL] * 4) + [8, 4, 1]
 
 
 def hamming(i: int) -> int:
@@ -16,6 +16,7 @@ def or_accumulate(r) -> int:
 
 def proven_unsolvable(r) -> bool:
     return len(r) > hamming(or_accumulate(r))
+
 
 def bitmap_to_bits(b):    
     s =[]
@@ -48,10 +49,7 @@ def solvable(a) -> bool:
     return False
     
 
-
-for i in range(len(cards)):
-    r = cards[i:]
-    res = []
-    print(f"{i}: {r} {solvable(r)} {res[::-1]}")    
+res = []
+print(f"{cards} {solvable(cards)} {res[::-1]}")    
 
     
